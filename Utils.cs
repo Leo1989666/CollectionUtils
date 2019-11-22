@@ -1017,5 +1017,28 @@ namespace TopeBox
             }
             return result;
         }
+        
+        /// <summary>
+        /// Conver from world pos to screen space camera gui pos
+        /// </summary>
+        /// <param name="convertObject"></param>
+        /// <param name="canvasRect"></param>
+        /// <param name="worldPos"></param>
+        /// <param name="mainCamera"></param>
+        public static void ConvertFromWorldToScreenSpaceGUI(RectTransform convertObject, RectTransform canvasRect,
+            Vector3 worldPos, Camera mainCamera)
+        {
+            if (mainCamera == null)
+            {
+                mainCamera = Camera.main;
+            }
+            
+            Vector3 screenPoint = RectTransformUtility.WorldToScreenPoint(mainCamera, worldPos );
+            Vector2 localPoint;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, screenPoint, mainCamera,
+                out localPoint);
+            
+            convertObject.localPosition = localPoint;
+        }
     }
 }

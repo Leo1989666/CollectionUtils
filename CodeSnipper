@@ -1,0 +1,7 @@
+     Gizmos.matrix = Matrix4x4.TRS(pos, rotation, scale);
+     Gizmos.color = Color.red;
+     Gizmos.DrawCube(Vector3.zero, Vector3.one);
+     // to visualize this:
+     Physics.OverlapBox(pos, scale, rotation, ...)
+     
+     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
